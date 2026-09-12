@@ -49,6 +49,26 @@ class AuthorProfile(models.Model):
         return f"Perfil de {self.author}"
 
 
+class Publication(models.Model):
+    book = models.ForeignKey(
+        'Book',
+        on_delete=models.CASCADE
+    )
+    publisher = models.ForeignKey(
+        Publisher,
+        on_delete=models.CASCADE
+    )
+    publication_date = models.DateField()
+    edition = models.PositiveIntegerField(default=1)
+
+    class Meta:
+        unique_together = ['book', 'publisher', 'edition']
+        ordering = ['-publication_date']
+
+    def __str__(self):
+        return f"{self.book.title} - {self.publisher.name} (Ed. {self.edition})"
+
+
 class Book(models.Model):
     title = models.CharField(max_length=200)
     isbn = models.CharField(max_length=13, unique=True)
@@ -58,6 +78,16 @@ class Book(models.Model):
     author = models.ForeignKey(
         Author,
         on_delete=models.PROTECT,
+        related_name='books'
+    )
+    categories = models.ManyToManyField(
+        Category,
+        related_name='books',
+        blank=True
+    )
+    publishers = models.ManyToManyField(
+        Publisher,
+        through='Publication',
         related_name='books'
     )
 
