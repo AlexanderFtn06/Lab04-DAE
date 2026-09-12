@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+<div class="book-detail">
+    <h1>{{ book.title }}</h1>
+
+    <div class="book-info">
+        <h2>Book Information</h2>
+        <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+        <p><strong>Publication Year:</strong> {{ book.publication_year }}</p>
+        {% if book.summary %}
+        <p><strong>Summary:</strong> {{ book.summary }}</p>
+        {% endif %}
+        {% if book.cover %}
+        <p><strong>Cover:</strong> <img src="{{ book.cover.url }}" alt="{{ book.title }} cover" class="cover-image"></p>
+        {% endif %}
+    </div>
+
+    <div class="author-info">
+        <h2>Author</h2>
+        <p><strong>Name:</strong> {{ book.author.first_name }} {{ book.author.last_name }}</p>
+        <p><strong>Nationality:</strong> {{ book.author.nationality|default:"Not specified" }}</p>
+        {% if book.author.birth_date %}
+        <p><strong>Birth Date:</strong> {{ book.author.birth_date }}</p>
+        {% endif %}
+
+        {% if book.author.profile %}
+        <div class="author-profile">
+            <h3>Author Profile</h3>
+            {% if book.author.profile.biography %}
+            <p><strong>Biography:</strong> {{ book.author.profile.biography|linebreaks }}</p>
+            {% endif %}
+            {% if book.author.profile.website %}
+            <p><strong>Website:</strong> <a href="{{ book.author.profile.website }}" target="_blank">{{ book.author.profile.website }}</a></p>
+            {% endif %}
+            {% if book.author.profile.photo %}
+            <p><strong>Photo:</strong> <img src="{{ book.author.profile.photo.url }}" alt="{{ book.author }} photo" style="max-width: 150px;"></p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="categories">
+        <h2>Categories</h2>
+        {% if book.categories.all %}
+        <ul>
+            {% for category in book.categories.all %}
+            <li>{{ category.name }}{% if category.description %}: {{ category.description }}{% endif %}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No categories assigned</p>
+        {% endif %}
+    </div>
+
+    <div class="publications">
+        <h2>Publications</h2>
+        {% if book.publications.all %}
+        <ul>
+            {% for publication in book.publications.all %}
+            <li class="publication-item">
+                <strong>{{ publication.publisher.name }}</strong> 
+                ({{ publication.publisher.country }}{% if publication.publisher.founded_year %}, founded {{ publication.publisher.founded_year }}{% endif %})<br>
+                Edition: {{ publication.edition }} | Publication Date: {{ publication.publication_date }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No publication information available</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
