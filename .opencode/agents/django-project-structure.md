@@ -1,9 +1,11 @@
 ---
 description: Create Django project with course structure, install Pillow, declare library app in INSTALLED_APPS
 mode: subagent
-tools: write, edit, bash
+tools:
+   write: true
+   edit: true
+   bash: true
 ---
-
 # Django Project Structure Agent
 
 ## Instructions

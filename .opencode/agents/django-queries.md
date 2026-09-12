@@ -1,7 +1,9 @@
 ---
 description: Execute Django shell queries: forward (book.author), reverse (author.books.all()), double underscore filtering; test CASCADE vs PROTECT on_delete behavior
 mode: subagent
-tools: bash, read
+tools:
+   write: true
+   edit: true
 ---
 
 # Django Queries Agent

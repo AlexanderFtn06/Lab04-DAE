@@ -1,7 +1,9 @@
 ---
 description: Write deliverable evidence section with course format: student name, title, result screenshot, code, result explanation, test cases, and project structure screenshot
 mode: subagent
-tools: read, write
+tools:
+  write: true
+  edit: true
 ---
 
 # Django Documentation Agent

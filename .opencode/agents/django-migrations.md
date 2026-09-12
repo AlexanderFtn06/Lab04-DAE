@@ -1,7 +1,9 @@
 ---
 description: Generate and apply migrations, verify created tables including the intermediate many-to-many table
 mode: subagent
-tools: bash, read
+tools:
+   write: true
+   edit: true
 ---
 
 # Django Migrations Agent

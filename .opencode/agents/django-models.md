@@ -1,7 +1,10 @@
 ---
 description: Declare Author, Book, Publisher, Category models with fields, Meta and __str__; link Book-Author (ForeignKey), Author-AuthorProfile (OneToOne), Book-Category (ManyToMany), Book-Publisher through Publication (with date and edition)
 mode: subagent
-tools: write, edit, bash
+tools:
+   write: true
+   edit: true
+   bash: true
 ---
 
 # Django Models Agent

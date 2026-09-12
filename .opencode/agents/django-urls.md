@@ -1,7 +1,9 @@
 ---
 description: Configure MEDIA_URL/MEDIA_ROOT in settings.py and add media serving route in config/urls.py for development
 mode: subagent
-tools: write, edit
+tools:
+   write: true
+   edit: true
 ---
 
 # Django URLs Agent

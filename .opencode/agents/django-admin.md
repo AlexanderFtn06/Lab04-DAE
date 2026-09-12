@@ -1,7 +1,10 @@
 ---
 description: Load test data via Django admin: 2 authors, 4 books, 3 categories, 2 publishers, with at least one book in 2 categories
 mode: subagent
-tools: write, edit, bash
+tools:
+  write: true
+  edit: true
+  bash: true
 ---
 
 # Django Admin Agent

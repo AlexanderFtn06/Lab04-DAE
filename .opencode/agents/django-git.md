@@ -1,7 +1,8 @@
 ---
 description: Push project to team GitHub repository (single repo per team)
 mode: subagent
-tools: bash
+tools:
+   write: true
 ---
 
 # Django Git Agent

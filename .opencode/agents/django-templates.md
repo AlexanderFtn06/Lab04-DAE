@@ -1,7 +1,9 @@
 ---
 description: Create book detail template showing categories, publisher (via Publication), and author data
 mode: subagent
-tools: write, edit
+tools:
+   write: true
+   edit: true
 ---
 
 # Django Templates Agent
