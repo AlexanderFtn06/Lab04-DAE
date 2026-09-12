@@ -35,6 +35,20 @@ class Category(models.Model):
         return self.name
 
 
+class AuthorProfile(models.Model):
+    author = models.OneToOneField(
+        Author,
+        on_delete=models.CASCADE,
+        related_name='profile'
+    )
+    biography = models.TextField(blank=True)
+    photo = models.ImageField(upload_to='authors/', blank=True, null=True)
+    website = models.URLField(blank=True)
+
+    def __str__(self):
+        return f"Perfil de {self.author}"
+
+
 class Book(models.Model):
     title = models.CharField(max_length=200)
     isbn = models.CharField(max_length=13, unique=True)
