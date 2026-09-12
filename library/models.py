@@ -33,3 +33,22 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    isbn = models.CharField(max_length=13, unique=True)
+    publication_year = models.PositiveIntegerField()
+    summary = models.TextField(blank=True)
+    cover = models.ImageField(upload_to='books/', blank=True, null=True)
+    author = models.ForeignKey(
+        Author,
+        on_delete=models.PROTECT,
+        related_name='books'
+    )
+
+    class Meta:
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
