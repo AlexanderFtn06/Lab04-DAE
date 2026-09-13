@@ -1,3 +1,20 @@
+/* Literary Color Palette */
+:root {
+    --bg-warm: #f5efe6;
+    --card-warm: #fdfbf7;
+    --border-warm: #e8dfd4;
+    --text-primary: #2d2825;
+    --text-secondary: #5a524a;
+    --text-muted: #8a8278;
+    --wine-dark: #6b1f2a;
+    --wine-medium: #8b2e3a;
+    --wine-light: #c97b84;
+    --earth-warm: #d4a574;
+    --earth-light: #ede3d8;
+    --shadow-soft: rgba(45, 40, 37, 0.08);
+    --shadow-medium: rgba(45, 40, 37, 0.12);
+}
+
 /* Base Styles */
 * {
     box-sizing: border-box;
@@ -8,43 +25,43 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 1.5rem 1rem;
-    background-color: #f8f9fa;
-    color: #2c3e50;
+    background-color: var(--bg-warm);
+    color: var(--text-primary);
     line-height: 1.6;
 }
 
 h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a252f;
+    color: var(--wine-dark);
     margin-bottom: 0.5rem;
 }
 
 h2 {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--wine-dark);
     margin: 1.5rem 0 0.75rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid #e1e4e8;
+    border-bottom: 1px solid var(--border-warm);
 }
 
 h3 {
     font-size: 1rem;
     font-weight: 600;
-    color: #3d4a5a;
+    color: var(--wine-medium);
     margin: 1rem 0 0.5rem;
 }
 
 /* Links */
 a {
-    color: #2563eb;
+    color: var(--wine-medium);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 a:hover {
-    color: #1d4ed8;
+    color: var(--wine-dark);
     text-decoration: underline;
 }
 
@@ -63,24 +80,25 @@ a:hover {
 }
 
 .btn-primary {
-    background-color: #2563eb;
+    background-color: var(--wine-dark);
     color: white;
 }
 
 .btn-primary:hover {
-    background-color: #1d4ed8;
+    background-color: #521720;
     color: white;
     text-decoration: none;
 }
 
 .btn-secondary {
-    background-color: #e5e7eb;
-    color: #374151;
+    background-color: var(--earth-light);
+    color: var(--wine-dark);
+    border: 1px solid var(--border-warm);
 }
 
 .btn-secondary:hover {
-    background-color: #d1d5db;
-    color: #1f2937;
+    background-color: var(--border-warm);
+    color: var(--wine-dark);
     text-decoration: none;
 }
 
@@ -100,12 +118,12 @@ a:hover {
 
 /* Sections */
 .detail-section {
-    background: white;
+    background: var(--card-warm);
     border-radius: 10px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
-    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px var(--shadow-soft), 0 1px 2px var(--shadow-soft);
+    border: 1px solid var(--border-warm);
 }
 
 .detail-section:last-of-type {
@@ -123,7 +141,7 @@ dl {
 
 dt {
     font-weight: 600;
-    color: #4b5563;
+    color: var(--text-secondary);
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 0.025em;
@@ -131,7 +149,7 @@ dt {
 
 dd {
     margin: 0;
-    color: #1f2937;
+    color: var(--text-primary);
 }
 
 /* Book List Styles */
@@ -141,17 +159,17 @@ dd {
 }
 
 .book-card {
-    background: white;
+    background: var(--card-warm);
     border-radius: 10px;
     padding: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
-    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px var(--shadow-soft), 0 1px 2px var(--shadow-soft);
+    border: 1px solid var(--border-warm);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .book-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 12px var(--shadow-medium), 0 2px 4px var(--shadow-soft);
 }
 
 .book-card-header h2 {
@@ -161,11 +179,11 @@ dd {
 }
 
 .book-card-header h2 a {
-    color: #1a252f;
+    color: var(--wine-dark);
 }
 
 .book-card-header h2 a:hover {
-    color: #2563eb;
+    color: var(--wine-medium);
     text-decoration: none;
 }
 
@@ -175,11 +193,11 @@ dd {
 
 .book-author {
     margin: 0 0 0.75rem;
-    color: #4b5563;
+    color: var(--text-secondary);
 }
 
 .book-author strong {
-    color: #1f2937;
+    color: var(--text-primary);
 }
 
 /* Category Chips */
@@ -193,19 +211,19 @@ dd {
 }
 
 .category-chip {
-    background-color: #dbeafe;
-    color: #1e40af;
+    background-color: var(--earth-light);
+    color: var(--wine-dark);
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 500;
-    border: 1px solid #bfdbfe;
+    border: 1px solid var(--border-warm);
 }
 
 .categories .category-chip,
 .book-categories .category-chip {
-    background-color: #dbeafe;
-    color: #1e40af;
+    background-color: var(--earth-light);
+    color: var(--wine-dark);
 }
 
 /* Publications in list */
@@ -214,7 +232,7 @@ dd {
 }
 
 .book-publications strong {
-    color: #4b5563;
+    color: var(--text-secondary);
     font-size: 0.875rem;
 }
 
@@ -222,7 +240,7 @@ dd {
     margin: 0.5rem 0 0;
     padding-left: 1.25rem;
     font-size: 0.875rem;
-    color: #374151;
+    color: var(--text-primary);
 }
 
 .book-publications li {
@@ -234,29 +252,29 @@ dd {
 .detail-actions {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid var(--border-warm);
 }
 
 /* Publications section in detail */
 .publication-item {
     margin-bottom: 0.75rem;
     padding: 0.75rem;
-    background: #f9fafb;
+    background: var(--earth-light);
     border-radius: 6px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-warm);
 }
 
 .publication-item strong {
-    color: #1f2937;
+    color: var(--wine-dark);
 }
 
 /* Author Profile */
 .author-profile {
-    background: #f9fafb;
+    background: var(--earth-light);
     border-radius: 8px;
     padding: 1rem;
     margin-top: 1rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border-warm);
 }
 
 .author-profile h3 {
@@ -272,14 +290,14 @@ dd {
     max-width: 200px;
     height: auto;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px var(--shadow-medium);
 }
 
 /* No books message */
 .no-books {
     text-align: center;
     padding: 3rem;
-    color: #6b7280;
+    color: var(--text-muted);
     font-size: 1.125rem;
 }
 
@@ -345,7 +363,11 @@ dd {
     .book-card,
     .detail-section {
         box-shadow: none;
-        border: 1px solid #ccc;
+        border: 1px solid var(--border-warm);
         break-inside: avoid;
+    }
+    
+    body {
+        background: white;
     }
 }
