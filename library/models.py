@@ -52,7 +52,8 @@ class AuthorProfile(models.Model):
 class Publication(models.Model):
     book = models.ForeignKey(
         'Book',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='publications'
     )
     publisher = models.ForeignKey(
         Publisher,
