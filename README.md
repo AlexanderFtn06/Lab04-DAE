@@ -49,8 +49,6 @@ Lab04-DAE/
 El esquema completo, con todos los campos y justificaciones, está en
 [`docs/data-model-spec.md`](docs/data-model-spec.md).
 
-**[CAPTURA: panel de administración mostrando el listado de modelos `library` (Authors, Books, Publishers, Categories, Publications, Author profiles)]**
-
 ## Metodología de desarrollo (OpenCode)
 
 Este proyecto se desarrolló usando [OpenCode](https://opencode.ai), un
@@ -70,13 +68,6 @@ herramientas que necesitaba:
 | `django-templates` | Crear las vistas y plantillas (listado y detalle de libro). |
 | `django-git` | Manejar los commits y la subida al repositorio. |
 | `django-documentation` | Redactar la evidencia del laboratorio y este README. |
-
-Los sub-agentes están definidos en [`.opencode/agents/`](.opencode/agents/)
-y comparten como única fuente de verdad el esquema de datos descrito en
-[`docs/data-model-spec.md`](docs/data-model-spec.md), para asegurar
-consistencia entre los nombres de modelos, campos y relaciones a lo largo
-de todo el desarrollo. Cada paso del procedimiento se registró en un
-commit independiente, siguiendo el historial de Git del repositorio.
 
 ## Instalación y uso
 
@@ -110,19 +101,19 @@ Luego abre:
 
 ## Capturas de funcionamiento
 
-**[CAPTURA: panel de administración con los modelos registrados]**
+**CAPTURA: panel de administración con los modelos registrados**
 ![alt text](image.png)
 
 ![alt text](image-4.png)
 
 ![alt text](image-6.png)
 
-**[CAPTURA: página de listado de libros ( / )]**
+**CAPTURA: página de listado de libros ( / )**
 ![alt text](image-1.png)
 
-**[CAPTURA: página de detalle de un libro ( /books/1/ )]**
+**CAPTURA: página de detalle de un libro ( /books/1/ )**
 ![alt text](image-3.png)
 
-**[CAPTURA: resultado de una consulta de ida y vuelta en el shell de Django]**
+**CAPTURA: resultado de una consulta de ida y vuelta en el shell de Django**
 ![alt text](image-3.png)
 
