@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Book List{% endblock %}
+
+{% block content %}
+<div class="book-list">
+    <h1>Library Catalog</h1>
+    
+    {% if books %}
+    <div class="books-grid">
+        {% for book in books %}
+        <article class="book-card">
+            <div class="book-card-header">
+                <h2><a href="{% url 'library:book_detail' book.pk %}">{{ book.title }}</a></h2>
+            </div>
+            
+            <div class="book-card-meta">
+                <p class="book-author"><strong>Author:</strong> {{ book.author }}</p>
+                
+                {% if book.categories.all %}
+                <div class="book-categories">
+                    <strong>Categories:</strong>
+                    <ul class="category-chips">
+                        {% for category in book.categories.all %}
+                        <li class="category-chip">{{ category.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                
+                {% if book.publications.all %}
+                <div class="book-publications">
+                    <strong>Published by:</strong>
+                    <ul>
+                        {% for publication in book.publications.all %}
+                        <li>{{ publication.publisher.name }} (Ed. {{ publication.edition }}, {{ publication.publication_date|date:"Y" }})</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="book-card-actions">
+                <a href="{% url 'library:book_detail' book.pk %}" class="btn btn-primary">View Details</a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="no-books">No books available in the catalog.</p>
+    {% endif %}
+</div>
+{% endblock %}

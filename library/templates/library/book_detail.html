@@ -4,50 +4,69 @@
 
 {% block content %}
 <div class="book-detail">
-    <h1>{{ book.title }}</h1>
-
-    <div class="book-info">
-        <h2>Book Information</h2>
-        <p><strong>ISBN:</strong> {{ book.isbn }}</p>
-        <p><strong>Publication Year:</strong> {{ book.publication_year }}</p>
-        {% if book.summary %}
-        <p><strong>Summary:</strong> {{ book.summary }}</p>
-        {% endif %}
-        {% if book.cover %}
-        <p><strong>Cover:</strong> <img src="{{ book.cover.url }}" alt="{{ book.title }} cover" class="cover-image"></p>
-        {% endif %}
+    <div class="detail-header">
+        <h1>{{ book.title }}</h1>
+        <a href="{% url 'library:book_list' %}" class="btn btn-secondary">← Back to List</a>
     </div>
 
-    <div class="author-info">
+    <div class="detail-section book-info">
+        <h2>Book Information</h2>
+        <dl>
+            <dt>ISBN</dt>
+            <dd>{{ book.isbn }}</dd>
+            <dt>Publication Year</dt>
+            <dd>{{ book.publication_year }}</dd>
+            {% if book.summary %}
+            <dt>Summary</dt>
+            <dd>{{ book.summary }}</dd>
+            {% endif %}
+            {% if book.cover %}
+            <dt>Cover</dt>
+            <dd><img src="{{ book.cover.url }}" alt="{{ book.title }} cover" class="cover-image"></dd>
+            {% endif %}
+        </dl>
+    </div>
+
+    <div class="detail-section author-info">
         <h2>Author</h2>
-        <p><strong>Name:</strong> {{ book.author.first_name }} {{ book.author.last_name }}</p>
-        <p><strong>Nationality:</strong> {{ book.author.nationality|default:"Not specified" }}</p>
-        {% if book.author.birth_date %}
-        <p><strong>Birth Date:</strong> {{ book.author.birth_date }}</p>
-        {% endif %}
+        <dl>
+            <dt>Name</dt>
+            <dd>{{ book.author.first_name }} {{ book.author.last_name }}</dd>
+            <dt>Nationality</dt>
+            <dd>{{ book.author.nationality|default:"Not specified" }}</dd>
+            {% if book.author.birth_date %}
+            <dt>Birth Date</dt>
+            <dd>{{ book.author.birth_date }}</dd>
+            {% endif %}
+        </dl>
 
         {% if book.author.profile %}
         <div class="author-profile">
             <h3>Author Profile</h3>
-            {% if book.author.profile.biography %}
-            <p><strong>Biography:</strong> {{ book.author.profile.biography|linebreaks }}</p>
-            {% endif %}
-            {% if book.author.profile.website %}
-            <p><strong>Website:</strong> <a href="{{ book.author.profile.website }}" target="_blank">{{ book.author.profile.website }}</a></p>
-            {% endif %}
-            {% if book.author.profile.photo %}
-            <p><strong>Photo:</strong> <img src="{{ book.author.profile.photo.url }}" alt="{{ book.author }} photo" style="max-width: 150px;"></p>
-            {% endif %}
+            <dl>
+                {% if book.author.profile.biography %}
+                <dt>Biography</dt>
+                <dd>{{ book.author.profile.biography|linebreaks }}</dd>
+                {% endif %}
+                {% if book.author.profile.website %}
+                <dt>Website</dt>
+                <dd><a href="{{ book.author.profile.website }}" target="_blank">{{ book.author.profile.website }}</a></dd>
+                {% endif %}
+                {% if book.author.profile.photo %}
+                <dt>Photo</dt>
+                <dd><img src="{{ book.author.profile.photo.url }}" alt="{{ book.author }} photo" style="max-width: 150px;"></dd>
+                {% endif %}
+            </dl>
         </div>
         {% endif %}
     </div>
 
-    <div class="categories">
+    <div class="detail-section categories">
         <h2>Categories</h2>
         {% if book.categories.all %}
-        <ul>
+        <ul class="category-chips">
             {% for category in book.categories.all %}
-            <li>{{ category.name }}{% if category.description %}: {{ category.description }}{% endif %}</li>
+            <li class="category-chip">{{ category.name }}{% if category.description %}: {{ category.description }}{% endif %}</li>
             {% endfor %}
         </ul>
         {% else %}
@@ -55,13 +74,13 @@
         {% endif %}
     </div>
 
-    <div class="publications">
+    <div class="detail-section publications">
         <h2>Publications</h2>
         {% if book.publications.all %}
         <ul>
             {% for publication in book.publications.all %}
             <li class="publication-item">
-                <strong>{{ publication.publisher.name }}</strong> 
+                <strong>{{ publication.publisher.name }}</strong>
                 ({{ publication.publisher.country }}{% if publication.publisher.founded_year %}, founded {{ publication.publisher.founded_year }}{% endif %})<br>
                 Edition: {{ publication.edition }} | Publication Date: {{ publication.publication_date }}
             </li>
@@ -70,6 +89,10 @@
         {% else %}
         <p>No publication information available</p>
         {% endif %}
+    </div>
+
+    <div class="detail-actions">
+        <a href="{% url 'library:book_list' %}" class="btn btn-secondary">← Back to List</a>
     </div>
 </div>
 {% endblock %}
